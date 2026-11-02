@@ -1,0 +1,37 @@
+
+name: Repository and Runner Information
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+
+  # JOB 1: Repository Details
+  job1:
+    name: Repository Details
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Display Repository Information
+        run: |
+          echo "Repository Name : ${{ github.repository }}"
+          echo "Triggered By    : ${{ github.actor }}"
+          echo "Branch Name     : ${{ github.ref_name }}"
+          echo "Commit ID       : ${{ github.sha }}"
+
+  # JOB 2: Runner Details
+  job2:
+    name: Runner Information
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Display Runner Information
+        run: |
+          echo "Runner Name      : ${{ runner.name }}"
+          echo "Runner OS        : ${{ runner.os }}"
+          echo "Runner Arch      : ${{ runner.arch }}"
+          echo "Runner Type      : ${{ runner.environment }}"
+          echo "Machine Selected : ubuntu-latest"
